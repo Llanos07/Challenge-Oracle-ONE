@@ -12,20 +12,21 @@ var encriptar = document.getElementById("encriptar"),
 
 
 function encriptarTexto() {
+    alert("funciona");
     let text = document.getElementById("idEncriptar");
 
     let newText = allReplace( text, { 'a': 'ai', 'e': 'enter', 'i': 'imes', 'o': 'ober', 'u': 'ufat' } );
 
     document.getElementById("msgEncriptado").innerHTML=newText;
     
-  }
+    }
 
 function desencriptarTexto() {
     let text = document.getElementById("idEncriptar");
 
     let newText = allReplace( text, { 'ai': 'a', 'enter': 'e', 'imes': 'i', 'ober': 'o', 'ufat': 'u' } )
     
-}
+    }
 
 encriptar.addEventListener('click',encriptarTexto,true);
 desencriptar.addEventListener('click',desencriptarTexto,true);
