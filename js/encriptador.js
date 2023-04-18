@@ -7,29 +7,52 @@ La letra "u" es convertida para "ufat"
 */
 
 var encriptar = document.getElementById("encriptar"),
-    desencriptar = document.getElementById("desencriptar");
+    desencriptar = document.getElementById("desencriptar"),
+    copiar = document.getElementById("copiar");
 
 
 
 function encriptarTexto() {
-    alert("funciona");
-    let text = document.getElementById("idEncriptar");
-
-    let newText = allReplace( text, { 'a': 'ai', 'e': 'enter', 'i': 'imes', 'o': 'ober', 'u': 'ufat' } );
-
-    document.getElementById("msgEncriptado").innerHTML=newText;
+    var text = document.getElementById("ingresartexto").value;
+    text = text.replace(/[e]/g, "enter");
+    text = text.replace(/[i]/g, "imes");
+    text = text.replace(/[a]/g, "ai");
+    text = text.replace(/[o]/g, "ober");
+    text = text.replace(/[u]/g, "ufat");
+  
+    document.getElementById("msgEncriptado").innerHTML = text.toString();
+    document.getElementById("ingresartexto").value="";
+    document.getElementById("idEncriptar").style.display="none";
+    document.getElementById("muñeco").style.display="none";
+    document.getElementById("copiar").style.display="flex";
+    document.getElementById("labelcopiar").textContent="Copiar";
     
     }
 
 function desencriptarTexto() {
-    let text = document.getElementById("idEncriptar");
+    var text = document.getElementById("ingresartexto").value;
+    text = text.replace(/enter/g, "e");
+    text = text.replace(/imes/g, "i");
+    text = text.replace(/ai/g, "a");
+    text = text.replace(/ober/g, "o");
+    text = text.replace(/ufat/g, "u");
 
-    let newText = allReplace( text, { 'ai': 'a', 'enter': 'e', 'imes': 'i', 'ober': 'o', 'ufat': 'u' } )
+    document.getElementById("msgEncriptado").innerHTML = text.toString();
+    document.getElementById("ingresartexto").value="";
+    document.getElementById("labelcopiar").textContent="Copiar";
     
     }
+  
+function copiarTexto(){
+  var textCopy = document.getElementById("msgEncriptado").value;
+  navigator.clipboard.writeText(textCopy);
+  document.getElementById("labelcopiar").textContent="¡Copiado!";
+
+}
 
 encriptar.addEventListener('click',encriptarTexto,true);
 desencriptar.addEventListener('click',desencriptarTexto,true);
+copiar.addEventListener('click',copiarTexto,true);
 
 
 
